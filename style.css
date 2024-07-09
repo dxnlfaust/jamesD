@@ -1,0 +1,122 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    background-color: white;
+    z-index: 1;
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid black;
+}
+
+.radio {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.track-info {
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.radio-controls button {
+    background-color: transparent;
+    color: black; /* Adjust as needed */
+    width: 50px
+    border: 2px solid transparent;
+    border-radius: 10px
+    cursor: pointer;
+}
+
+#play-pause, #skip {
+    width: 60px;
+}
+
+.radio-controls button:hover {
+    opacity: 0.8;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+}
+
+#container {
+    width: calc(100% - 10px); /* Adjust as needed */
+    height: calc(100% - 10px); /* Adjust as needed */
+    margin: 5px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+.mobile-controls {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+    box-sizing: border-box;
+    display: none; /* Hidden by default */
+}
+
+.mobile-controls button {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+    font-variant: small-caps;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: black;
+    box-shadow: 0 0 5px purple;
+}
+
+.left-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.left-controls button {
+    margin-right: 15px; /* Add space between left buttons */
+}
+
+.right-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right-controls button {
+    margin-top: 15px; /* Add space between right buttons */
+}
+
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex; /* Show on mobile devices */
+    }
+}
