@@ -36,7 +36,7 @@ const init = () => {
     });
     loader.load('car.glb', (gltf) => {
         car = gltf.scene;
-        car.position.set(0, 1.5, 0);
+        car.position.set(0, 2.5, 0);
         scene.add(car);
     });
 
@@ -120,7 +120,7 @@ const animate = () => {
         if (keys.left) car.rotation.y += 0.03;
         if (keys.right) car.rotation.y -= 0.03;
 
-        const relativeCameraOffset = new THREE.Vector3(0, 0.5, -4);
+        const relativeCameraOffset = new THREE.Vector3(0, -0.5, -5.5);
         const cameraOffset = relativeCameraOffset.applyMatrix4(car.matrixWorld);
 
         camera.position.lerp(cameraOffset, 0.3);
