@@ -120,7 +120,7 @@ const animate = () => {
         if (keys.left) car.rotation.y += 0.03;
         if (keys.right) car.rotation.y -= 0.03;
 
-        const relativeCameraOffset = new THREE.Vector3(0, -0.5, -5.5);
+        const relativeCameraOffset = new THREE.Vector3(0, 0, -5);
         const cameraOffset = relativeCameraOffset.applyMatrix4(car.matrixWorld);
 
         camera.position.lerp(cameraOffset, 0.3);
