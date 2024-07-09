@@ -120,3 +120,82 @@ header h1 {
         display: flex; /* Show on mobile devices */
     }
 }
+
+#menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+#menu-button {
+    width: 60px;
+    height: 60px;
+    left: -30px;
+    top: -30px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-color: black;
+    background-color: transparent;
+    color: black;
+    font-size: 12px;
+    font-variant: small-caps;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 1s;
+    position: absolute;
+}
+
+#menu-button.active {
+    z-index: 3; /* Increase z-index when active */
+    position: absolute;
+    opacity: 0.2;
+}
+
+#menu-icons {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.menu-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    box-shadow: 0 0 5px transparent;
+    transition: box-shadow 0.3s;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+}
+
+.menu-icon:hover {
+    box-shadow: 0 0 10px yellow;
+}
+
+*,*:focus,*:hover{
+    outline:none;
+}
+
+#merch { transform: translate(115%, -115%); }
+#music { transform: translate(-115%, 115%); }
+#art { transform: translate(345%, 115%); }
+#contact { transform: translate(115%, 345%); }
+#instagram { transform: translate(270%, -45%); }
+#blank1 { transform: translate(270%, 270%); }
+#blank2 { transform: translate(-60%, 270%); }
+#blank3 { transform: translate(-60%, -45%); }
