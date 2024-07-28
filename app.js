@@ -10,6 +10,7 @@ const init = () => {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
+    renderer.shadowMap.enabled = true; // Enable shadow maps
 
     // Scene
     scene = new THREE.Scene();
@@ -24,7 +25,7 @@ const init = () => {
     const ambientLight = new THREE.AmbientLight(0xF3FFFF, 1);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xF3FFFF, 0.5);
+    const sunLight = new THREE.DirectionalLight(0xF3FFFF, 0.4);
     sunLight.position.set(-10, 10, -10);
     scene.add(sunLight);
 
