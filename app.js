@@ -2,7 +2,7 @@ let camera, scene, renderer;
 let car, environment;
 let keys = { left: false, right: false, forward: false, backward: false };
 let velocity = 0;
-const acceleration = 0.007;
+const acceleration = 0.009;
 const friction = 0.99;
 
 const init = () => {
