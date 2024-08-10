@@ -2,7 +2,7 @@ let camera, scene, renderer;
 let car, environment;
 let keys = { left: false, right: false, forward: false, backward: false };
 let velocity = 0;
-const acceleration = 0.002;
+const acceleration = 0.004;
 const friction = 0.99;
 
 const init = () => {
@@ -10,6 +10,7 @@ const init = () => {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
+    renderer.shadowMap.enabled = true; // Enable shadow maps
 
     // Scene
     scene = new THREE.Scene();
@@ -21,10 +22,10 @@ const init = () => {
     camera.lookAt(0, 0, 0);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xF3FFFF, 1);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xF3FFFF, 1);
+    const sunLight = new THREE.DirectionalLight(0xF3FFFF, 0.4);
     sunLight.position.set(-10, 10, -10);
     scene.add(sunLight);
 
