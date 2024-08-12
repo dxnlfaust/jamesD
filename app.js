@@ -2,7 +2,7 @@ let camera, scene, renderer;
 let car, environment;
 let keys = { left: false, right: false, forward: false, backward: false };
 let velocity = 0;
-const acceleration = 0.009;
+const acceleration = 0.008;
 const friction = 0.99;
 
 const init = () => {
@@ -33,6 +33,7 @@ const init = () => {
     const loader = new THREE.GLTFLoader();
     loader.load('environment.glb', (gltf) => {
         environment = gltf.scene;
+        environment.scale.set(1.2, 1.2, 1.2, 1.2);
         scene.add(environment);
     });
     loader.load('car.glb', (gltf) => {
@@ -118,8 +119,8 @@ const animate = () => {
 
         car.translateZ(velocity);
 
-        if (keys.left) car.rotation.y += 0.03;
-        if (keys.right) car.rotation.y -= 0.03;
+        if (keys.left) car.rotation.y += 0.05;
+        if (keys.right) car.rotation.y -= 0.05;
 
         const relativeCameraOffset = new THREE.Vector3(0, -0.5, -6.5);
         const cameraOffset = relativeCameraOffset.applyMatrix4(car.matrixWorld);
