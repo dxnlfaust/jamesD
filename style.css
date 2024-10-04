@@ -211,6 +211,13 @@ img {
     outline: none;
 }
 
+* {
+    -webkit-user-select: none; /* Disable selection in Safari */
+    -ms-user-select: none; /* Disable selection in IE10/11 */
+    user-select: none; /* Disable selection in other browsers */
+}
+
+
 #merch { transform: translate(3rem, -3rem); } /* 115px */
 #music { transform: translate(3rem, 9rem); } /* 115px */
 #art { transform: translate(-2.5rem, 0rem); } /* 345px */
