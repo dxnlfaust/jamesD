@@ -9,7 +9,7 @@ body, html {
     align-items: center;
     justify-content: center;
     background-color: white;
-    border: 0.3125rem solid white; /* 5px */
+    border: 0.35rem solid white; /* 5px */
     box-sizing: border-box;
 }
 
@@ -54,7 +54,7 @@ canvas {
 
 .mobile-controls {
     position: absolute;
-    bottom: 1.5rem; /* 25px */
+    bottom: 1rem; /* 25px */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -64,46 +64,56 @@ canvas {
 }
 
 .mobile-controls button {
-    width: 3.5rem; /* 60px */
-    height: 3.5rem; /* 60px */
+    width: 3.3rem; /* 60px */
+    height: 3.3rem; /* 60px */
+    border: none;
+    background-color: transparent;
     font-size: 0.75rem; /* 12px */
     font-variant: small-caps;
     font-weight: bold;
-    border-radius: 1rem; /* 10px */
-    border: 0.0625rem solid #784173; /* 2px */
-    background-color: rgba(255, 255, 255, 0.1);
-    color: black;
-    opacity: 0.7;
+    opacity: 1;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
 }
 
-.mobile-controls button:hover {
-    box-shadow: 0 0 0.3rem #784173;
-}
-
-.left-controls {
+.controls {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
 }
 
-.left-controls button {
-    margin-right: 0.35rem; /* 15px */
-}
-
-.right-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.right-controls button {
+.controls button {
     margin-top: 0.35rem; /* 15px */
 }
 
-@media (max-width: 48rem) { /* 768px */
+#left {
+    background-image: url('button-L.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#right {
+    background-image: url('button-R.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#accelerate {
+    background-image: url('button-ACC.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 4rem;
+}
+
+#brake {
+    background-image: url('button-BR.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 2.9rem;
+}
+
+@media (max-width: 1080px) { /* 768px */
     .mobile-controls {
         display: flex; /* Show on mobile devices */
     }
