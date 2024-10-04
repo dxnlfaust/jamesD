@@ -11,6 +11,8 @@ body, html {
     background-color: white;
     border: 0.35rem solid white; /* 5px */
     box-sizing: border-box;
+    touch-action: manipulation; /* Disables pinch-zoom and double-tap zoom */
+    -ms-touch-action: manipulation; /* IE */
 }
 
 header {
@@ -215,6 +217,7 @@ img {
     -webkit-user-select: none; /* Disable selection in Safari */
     -ms-user-select: none; /* Disable selection in IE10/11 */
     user-select: none; /* Disable selection in other browsers */
+    -webkit-tap-highlight-color: transparent; /* Disable tap highlighting on iOS */
 }
 
 
