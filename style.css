@@ -103,14 +103,12 @@ canvas {
     background-image: url('button-ACC.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 4rem;
 }
 
 #brake {
     background-image: url('button-BR.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 2.9rem;
 }
 
 @media (max-width: 1080px) { /* 768px */
