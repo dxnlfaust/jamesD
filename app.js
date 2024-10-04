@@ -28,6 +28,26 @@ const init = () => {
     const sunLight = new THREE.DirectionalLight(0xF3FFFF, 0.4);
     sunLight.position.set(-10, 10, -10);
     scene.add(sunLight);
+    
+    const skyloader = new THREE.TextureLoader();
+    skyloader.load('TrumanShowSkybox+Dusk.jpg', function(texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping; // Or ReflectionMapping if needed
+        const material = new THREE.MeshBasicMaterial({
+            map: texture,
+            side: THREE.BackSide, // The texture should be applied on the inside of the skybox
+            transparent: true,    // Enable transparency
+            opacity: 0.1          // Set the opacity to make it slightly transparent
+    });
+    
+    const skyboxGeometry = new THREE.SphereGeometry(5000, 32, 32); // Create a large sphere for skybox
+    const skybox = new THREE.Mesh(skyboxGeometry, material);
+    
+    // Scale vertically to lower the horizon
+    skybox.rotation.y = Math.PI / 20; // Rotate 45 degrees on the Y axis
+        
+    scene.add(skybox);
+    scene.background = texture;
+    });
 
     // Load environment and car
     const loader = new THREE.GLTFLoader();
