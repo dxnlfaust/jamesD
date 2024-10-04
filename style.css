@@ -93,16 +93,12 @@ canvas {
     background-image: url('button-L.png');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 2.5rem;
 }
 
 #right {
     background-image: url('button-R.png');
     background-size: cover;
     background-repeat: no-repeat;
-    width: 2.5rem;
-    height: 2.5rem;
 }
 
 #accelerate {
