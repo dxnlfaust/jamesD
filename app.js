@@ -148,3 +148,20 @@ const animate = () => {
 };
 
 init();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const menuIcons = document.getElementById('menu-icons');
+
+    menuButton.addEventListener('click', () => {
+        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
+            menuIcons.style.display = 'block';
+            menuButton.classList.add('active');
+            menuButton.textContent = 'x';
+        } else {
+            menuIcons.style.display = 'none';
+            menuButton.textContent = 'menu';
+            menuButton.classList.remove('active');
+        }
+    });
+});
