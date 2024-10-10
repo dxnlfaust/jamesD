@@ -1,5 +1,7 @@
 let camera, scene, renderer;
 let car, environment;
+
+// Moved `keys` here, ensuring it's defined before being referenced
 let keys = { left: false, right: false, forward: false, backward: false };
 let velocity = 0;
 const acceleration = 0.008;
@@ -14,7 +16,6 @@ const init = () => {
 
     // Scene
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
 
     // Camera
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -29,31 +30,11 @@ const init = () => {
     sunLight.position.set(-10, 10, -10);
     scene.add(sunLight);
     
-    const skyloader = new THREE.TextureLoader();
-    skyloader.load('TrumanShowSkybox+Dusk.jpg', function(texture) {
-        texture.mapping = THREE.EquirectangularReflectionMapping; // Or ReflectionMapping if needed
-        const material = new THREE.MeshBasicMaterial({
-            map: texture,
-            side: THREE.BackSide, // The texture should be applied on the inside of the skybox
-            transparent: true,    // Enable transparency
-            opacity: 0.1          // Set the opacity to make it slightly transparent
-    });
-    
-    const skyboxGeometry = new THREE.SphereGeometry(5000, 32, 32); // Create a large sphere for skybox
-    const skybox = new THREE.Mesh(skyboxGeometry, material);
-    
-    // Scale vertically to lower the horizon
-    skybox.rotation.y = Math.PI / 20; // Rotate 45 degrees on the Y axis
-        
-    scene.add(skybox);
-    scene.background = texture;
-    });
-
     // Load environment and car
     const loader = new THREE.GLTFLoader();
     loader.load('environment.glb', (gltf) => {
         environment = gltf.scene;
-        environment.scale.set(1.2, 1.2, 1.2, 1.2);
+        environment.scale.set(1.2, 1.2, 1.2);
         scene.add(environment);
     });
     loader.load('car.glb', (gltf) => {
@@ -61,6 +42,20 @@ const init = () => {
         car.position.set(0, 3.5, 0);
         scene.add(car);
     });
+
+    // Create a cubemap texture using the same image for all faces
+    const textureLoader = new THREE.CubeTextureLoader();
+    const skyTexture = textureLoader.load([
+        'SKYTILE.jpg', // Right
+        'SKYTILE.jpg', // Left
+        'SKYTILE.jpg', // Top
+        'SKYTILE.jpg', // Bottom
+        'SKYTILE.jpg', // Front
+        'SKYTILE.jpg', // Back
+    ]);
+    
+    // Set the cubemap as the scene's background
+    scene.background = skyTexture;
 
     // Event listeners
     window.addEventListener('resize', onWindowResize);
@@ -153,20 +148,3 @@ const animate = () => {
 };
 
 init();
-
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
-    const menuIcons = document.getElementById('menu-icons');
-
-    menuButton.addEventListener('click', () => {
-        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
-            menuIcons.style.display = 'block';
-            menuButton.classList.add('active');
-            menuButton.textContent = 'x';
-        } else {
-            menuIcons.style.display = 'none';
-            menuButton.textContent = 'menu';
-            menuButton.classList.remove('active');
-        }
-    });
-});
