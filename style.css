@@ -113,7 +113,7 @@ canvas {
     background-repeat: no-repeat;
 }
 
-@media (max-width: 1080px) { /* 768px */
+@media (pointer: course) { 
     .mobile-controls {
         display: flex; /* Show on mobile devices */
     }

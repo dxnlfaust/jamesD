@@ -170,3 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the device has a touchscreen
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        // If true, the device supports touch events
+        document.querySelector('.mobile-controls').style.display = 'flex';
+    } else {
+        // If not, hide the mobile controls
+        document.querySelector('.mobile-controls').style.display = 'none';
+    }
+});
