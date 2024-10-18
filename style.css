@@ -164,8 +164,8 @@ canvas {
 }
 
 img {
-    width: 3rem; /* 60px */
-    height: 3rem;
+    width: 3.3rem; /* 60px */
+    height: 3.3rem;
     pointer-events: none; /* Disable all pointer events */
     -webkit-user-drag: none; /* Prevent dragging on iOS Safari */
 }
