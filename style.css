@@ -89,30 +89,6 @@ canvas {
     margin-top: 0.35rem; /* 15px */
 }
 
-#left {
-    background-image: url('button-L.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#right {
-    background-image: url('button-R.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#accelerate {
-    background-image: url('button-ACC.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#brake {
-    background-image: url('button-BR.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 @media (pointer: course) { 
     .mobile-controls {
         display: flex; /* Show on mobile devices */
@@ -188,10 +164,10 @@ canvas {
 }
 
 img {
-    width: 3.75rem; /* 60px */
-    height: 3.75rem; /* 60px */
+    width: 3.3rem; /* 60px */
     pointer-events: none; /* Disable all pointer events */
     -webkit-user-drag: none; /* Prevent dragging on iOS Safari */
+    object-fit: cover; /* Ensures the image behaves like background-size: cover */
 }
 
 .menu-text {
