@@ -181,3 +181,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.mobile-controls').style.display = 'none';
     }
 });
+
+document.addEventListener('contextmenu', function (event) {
+    if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+    }
+}, false);
+
