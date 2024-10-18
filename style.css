@@ -167,7 +167,6 @@ img {
     width: 3.3rem; /* 60px */
     pointer-events: none; /* Disable all pointer events */
     -webkit-user-drag: none; /* Prevent dragging on iOS Safari */
-    object-fit: cover; /* Ensures the image behaves like background-size: cover */
 }
 
 .menu-text {
