@@ -171,6 +171,7 @@ img {
 
 .menu-text {
     position:absolute;
+    top: 3rem;
     font-family: Arial, sans-serif;
     font-size: 0.75rem; /* 12px */
     font-variant: small-caps;
