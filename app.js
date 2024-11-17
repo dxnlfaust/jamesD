@@ -157,6 +157,10 @@ init();
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menu-button');
     const menuIcons = document.getElementById('menu-icons');
+    const img = document.createElement('img');
+    img.src = 'img/menu/icon151.png'; // Set the source of your image
+    img.alt = 'menu'; // Set alt text for accessibility
+    img.className = 'menu-demon';
 
     menuButton.addEventListener('click', () => {
         if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
@@ -165,7 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
             menuButton.textContent = 'x';
         } else {
             menuIcons.style.display = 'none';
-            menuButton.textContent = 'menu';
+            menuButton.textContent = '';
+            menuButton.appendChild(img);
             menuButton.classList.remove('active');
         }
     });

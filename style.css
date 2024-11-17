@@ -108,6 +108,7 @@ canvas {
     height: 3.5rem; /* 60px */
     left: -1.875rem; /* 30px */
     top: -1.875rem; /* 30px */
+    padding: 0;
     border-radius: 50%;
     border-width: 0.0625rem; /* 1px */
     border-color: black;
@@ -132,6 +133,11 @@ canvas {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+.menu-demon {
+    height: 2.5rem;
+    padding: 0.4rem;
 }
 
 #menu-icons {
@@ -165,7 +171,8 @@ canvas {
 }
 
 img {
-    width: 3.3rem; /* 60px */
+    max-width: 3.3rem; /* 60px */
+    max-height: 3.3rem;
     pointer-events: none; /* Disable all pointer events */
     -webkit-user-drag: none; /* Prevent dragging on iOS Safari */
 }
@@ -184,7 +191,6 @@ img {
     text-decoration: none;
     text-align: center;
     color: black;
-    background-color: #E8D851;
     padding: 5px;
     padding-right: 7px;
     padding-left: 7px;
