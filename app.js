@@ -5,6 +5,8 @@ let velocity = 0;
 const acceleration = 0.008;
 const friction = 0.99;
 
+const colliders = [];
+
 const init = () => {
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -53,19 +55,29 @@ const init = () => {
     const loader = new THREE.GLTFLoader();
     loader.load('environment.glb', (gltf) => {
         environment = gltf.scene;
-        environment.scale.set(1.2, 1.2, 1.2, 1.2);
+        environment.scale.set(1.2, 1.2, 1.2);
         scene.add(environment);
     });
+
     loader.load('car.glb', (gltf) => {
         car = gltf.scene;
-    // Set position
-    car.position.set(-75, 3.5, 1.5);
+        car.position.set(-75, 3.5, 1.5);
 
-    // Rotate 90 degrees to the left (around the Y-axis)
-    car.rotation.y = Math.PI / 2; // 90 degrees in radians        
-    scene.add(car);
+        // Rotate 90 degrees to the left (around the Y-axis)
+        car.rotation.y = Math.PI / 2; // 90 degrees in radians        
+        scene.add(car);
     });
-    
+
+    // Load colliders
+    loader.load('colliders.glb', (gltf) => {
+        gltf.scene.traverse((child) => {
+            if (child.isMesh) {
+                colliders.push(child);
+            }
+        });
+        gltf.scene.scale.set(1.2, 1.2, 1.2);
+        scene.add(gltf.scene);
+    });
 
     // Event listeners
     window.addEventListener('resize', onWindowResize);
@@ -147,6 +159,15 @@ const animate = () => {
         if (keys.left) car.rotation.y += 0.05;
         if (keys.right) car.rotation.y -= 0.05;
 
+        // Collision detection
+        const carBox = new THREE.Box3().setFromObject(car);
+        colliders.forEach(collider => {
+            const colliderBox = new THREE.Box3().setFromObject(collider);
+            if (carBox.intersectsBox(colliderBox)) {
+                velocity = 0; // Stop the car
+            }
+        });
+
         const relativeCameraOffset = new THREE.Vector3(0, -0.5, -6.5);
         const cameraOffset = relativeCameraOffset.applyMatrix4(car.matrixWorld);
 
@@ -158,43 +179,3 @@ const animate = () => {
 };
 
 init();
-
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
-    const menuIcons = document.getElementById('menu-icons');
-    const img = document.createElement('img');
-    img.src = 'img/menu/icon151.png'; // Set the source of your image
-    img.alt = 'menu'; // Set alt text for accessibility
-    img.className = 'menu-demon';
-
-    menuButton.addEventListener('click', () => {
-        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
-            menuIcons.style.display = 'block';
-            menuButton.classList.add('active');
-            menuButton.textContent = 'x';
-        } else {
-            menuIcons.style.display = 'none';
-            menuButton.textContent = '';
-            menuButton.appendChild(img);
-            menuButton.classList.remove('active');
-        }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if the device has a touchscreen
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        // If true, the device supports touch events
-        document.querySelector('.mobile-controls').style.display = 'flex';
-    } else {
-        // If not, hide the mobile controls
-        document.querySelector('.mobile-controls').style.display = 'none';
-    }
-});
-
-document.addEventListener('contextmenu', function (event) {
-    if (event.target.tagName === 'IMG') {
-        event.preventDefault();
-    }
-}, false);
-
