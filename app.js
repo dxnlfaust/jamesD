@@ -30,7 +30,7 @@ const init = () => {
     scene.add(sunLight);
     
     const skyloader = new THREE.TextureLoader();
-    skyloader.load('sky.jpg', function(texture) {
+    skyloader.load('img/sky.jpg', function(texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping; // Or ReflectionMapping if needed
         const material = new THREE.MeshBasicMaterial({
             map: texture,
@@ -58,9 +58,14 @@ const init = () => {
     });
     loader.load('car.glb', (gltf) => {
         car = gltf.scene;
-        car.position.set(0, 3.5, 0);
-        scene.add(car);
+    // Set position
+    car.position.set(-75, 3.5, 1.5);
+
+    // Rotate 90 degrees to the left (around the Y-axis)
+    car.rotation.y = Math.PI / 2; // 90 degrees in radians        
+    scene.add(car);
     });
+    
 
     // Event listeners
     window.addEventListener('resize', onWindowResize);
