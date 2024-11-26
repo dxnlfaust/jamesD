@@ -179,3 +179,42 @@ const animate = () => {
 };
 
 init();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const menuIcons = document.getElementById('menu-icons');
+    const img = document.createElement('img');
+    img.src = 'img/menu/icon151.png'; // Set the source of your image
+    img.alt = 'menu'; // Set alt text for accessibility
+    img.className = 'menu-demon';
+
+    menuButton.addEventListener('click', () => {
+        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
+            menuIcons.style.display = 'block';
+            menuButton.classList.add('active');
+            menuButton.textContent = 'x';
+        } else {
+            menuIcons.style.display = 'none';
+            menuButton.textContent = '';
+            menuButton.appendChild(img);
+            menuButton.classList.remove('active');
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the device has a touchscreen
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        // If true, the device supports touch events
+        document.querySelector('.mobile-controls').style.display = 'flex';
+    } else {
+        // If not, hide the mobile controls
+        document.querySelector('.mobile-controls').style.display = 'none';
+    }
+});
+
+document.addEventListener('contextmenu', function (event) {
+    if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+    }
+}, false);
