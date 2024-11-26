@@ -164,7 +164,11 @@ const animate = () => {
         colliders.forEach(collider => {
             const colliderBox = new THREE.Box3().setFromObject(collider);
             if (carBox.intersectsBox(colliderBox)) {
-                velocity = 0; // Stop the car
+                if (velocity > 0) {
+                    velocity = -0.3; // Bounce backward if moving forward
+                } else if (velocity < 0) {
+                    velocity = 0.3; // Bounce forward if moving backward
+                }
             }
         });
 
