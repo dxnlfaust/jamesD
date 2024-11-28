@@ -165,9 +165,9 @@ const animate = () => {
             const colliderBox = new THREE.Box3().setFromObject(collider);
             if (carBox.intersectsBox(colliderBox)) {
                 if (velocity > 0) {
-                    velocity = -0.3; // Bounce backward if moving forward
+                    velocity = -0.2; // Bounce backward if moving forward
                 } else if (velocity < 0) {
-                    velocity = 0.3; // Bounce forward if moving backward
+                    velocity = 0.2; // Bounce forward if moving backward
                 }
             }
         });
@@ -187,20 +187,15 @@ init();
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menu-button');
     const menuIcons = document.getElementById('menu-icons');
-    const img = document.createElement('img');
-    img.src = 'img/menu/icon151.png'; // Set the source of your image
-    img.alt = 'menu'; // Set alt text for accessibility
-    img.className = 'menu-demon';
 
     menuButton.addEventListener('click', () => {
         if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
             menuIcons.style.display = 'block';
             menuButton.classList.add('active');
-            menuButton.textContent = 'x';
+            menuButton.textContent = '✕';
         } else {
             menuIcons.style.display = 'none';
-            menuButton.textContent = '';
-            menuButton.appendChild(img);
+            menuButton.textContent = '☰';
             menuButton.classList.remove('active');
         }
     });

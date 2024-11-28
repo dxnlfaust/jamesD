@@ -110,11 +110,11 @@ canvas {
     top: -1.875rem; /* 30px */
     padding: 0;
     border-radius: 50%;
-    border-width: 0.0625rem; /* 1px */
+    border-width: 0.1rem; /* 1px */
     border-color: black;
     background-color: transparent;
     color: black;
-    font-size: 0.75rem; /* 12px */
+    font-size: 1rem; /* 12px */
     font-variant: small-caps;
     font-weight: bold;
     cursor: pointer;
