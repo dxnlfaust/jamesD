@@ -114,11 +114,11 @@ canvas {
     border-color: black;
     background-color: transparent;
     color: black;
-    font-size: 1rem; /* 12px */
+    font-size: 1.5rem; /* 12px */
     font-variant: small-caps;
     font-weight: bold;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.5;
     transition: opacity 1s;
     position: absolute;
     -webkit-user-select: none; /* Safari */
@@ -133,11 +133,6 @@ canvas {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-}
-
-.menu-demon {
-    height: 2.5rem;
-    padding: 0.4rem;
 }
 
 #menu-icons {
