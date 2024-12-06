@@ -1,3 +1,37 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const menuIcons = document.getElementById('menu-icons');
+
+    menuButton.addEventListener('click', () => {
+        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
+            menuIcons.style.display = 'block';
+            menuButton.classList.add('active');
+            menuButton.textContent = '✕';
+        } else {
+            menuIcons.style.display = 'none';
+            menuButton.textContent = '☰';
+            menuButton.classList.remove('active');
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the device has a touchscreen
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        // If true, the device supports touch events
+        document.querySelector('.mobile-controls').style.display = 'flex';
+    } else {
+        // If not, hide the mobile controls
+        document.querySelector('.mobile-controls').style.display = 'none';
+    }
+});
+
+document.addEventListener('contextmenu', function (event) {
+    if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+    }
+}, false);
+
 let camera, scene, renderer;
 let car, environment;
 let keys = { left: false, right: false, forward: false, backward: false };
@@ -183,37 +217,3 @@ const animate = () => {
 };
 
 init();
-
-document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
-    const menuIcons = document.getElementById('menu-icons');
-
-    menuButton.addEventListener('click', () => {
-        if (menuIcons.style.display === 'none' || menuIcons.style.display === '') {
-            menuIcons.style.display = 'block';
-            menuButton.classList.add('active');
-            menuButton.textContent = '✕';
-        } else {
-            menuIcons.style.display = 'none';
-            menuButton.textContent = '☰';
-            menuButton.classList.remove('active');
-        }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Check if the device has a touchscreen
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        // If true, the device supports touch events
-        document.querySelector('.mobile-controls').style.display = 'flex';
-    } else {
-        // If not, hide the mobile controls
-        document.querySelector('.mobile-controls').style.display = 'none';
-    }
-});
-
-document.addEventListener('contextmenu', function (event) {
-    if (event.target.tagName === 'IMG') {
-        event.preventDefault();
-    }
-}, false);
