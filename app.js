@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.mobile-controls').style.display = 'flex';
     } else {
         // If not, hide the mobile controls
-        document.querySelector('.mobile-controls').style.display = 'none';
+        document.querySelector('.mobile-controls').style.display = 'none !important';
     }
 });
 
